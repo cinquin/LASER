@@ -575,7 +575,7 @@ int main(int argc, char* argv[]){
 		TW = 3.2712;
 	}
 	// Set number of threads 
-	openblas_set_num_threads(NUM_THREADS);
+//	openblas_set_num_threads(NUM_THREADS);
 	
 	// #####################  Check data format ############################
 	if(CHECK_FORMAT != 0){
