@@ -11,33 +11,34 @@
 
 all: laser trace
 
-LOCAL = /home/chaolong/usr
+LOCAL = /usr/local/
 ## Change $(LOCAL) if GSL and Armadillo were installed in a different directory
 
 G++FLAG = -O3 -fopenmp
+CXX = g++6
 
 laser: laser.o
-	g++ -static -o laser laser.o \
-	/usr/lib/libgsl.a \
-	/usr/lib/libgslcblas.a \
-	/usr/lib/liblapack.a \
+	$(CXX) $(G++FLAG) -static -o laser laser.o \
+	/usr/local/lib/libgsl.a \
+	/usr/local/lib/libgslcblas.a \
+	/usr/local/lib/liblapack.a \
 	$(LOCAL)/lib/libopenblas.a \
-	-lgfortran -lpthread
+	-lgfortran -lpthread -lstdc++ -std=c++11 -lquadmath
 
 laser.o: laser.cpp
-	g++ $(G++FLAG) -c laser.cpp -I /usr/include -I $(LOCAL)/include  
+	$(CXX) $(G++FLAG) -c laser.cpp -I /usr/include -I $(LOCAL)/include
 	
 
 trace: trace.o
-	g++ -static -o trace trace.o \
-	/usr/lib/libgsl.a \
-	/usr/lib/libgslcblas.a \
-	/usr/lib/liblapack.a \
+	$(CXX) $(G++FLAG) -static -o trace trace.o \
+	/usr/local/lib/libgsl.a \
+	/usr/local/lib/libgslcblas.a \
+	/usr/local/lib/liblapack.a \
 	$(LOCAL)/lib/libopenblas.a \
-	-lgfortran -lpthread
+	-lgfortran -lpthread -lstdc++ -std=c++11 -lquadmath
 
 trace.o: trace.cpp
-	g++ $(G++FLAG) -c trace.cpp -I /usr/include -I $(LOCAL)/include  
+	$(CXX) $(G++FLAG) -c trace.cpp -I /usr/include -I $(LOCAL)/include
 
 
 clean:
