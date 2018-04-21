@@ -1,0 +1,1 @@
+awk '{if(NR>1){print $1, $2-1, $2, $3;}}' HGDP_938.site > HGDP_938.bed
