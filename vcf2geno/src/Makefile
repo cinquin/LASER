@@ -80,7 +80,7 @@ $(DIR_EXEC_DBG)/$(EXEC): lib-dbg \
 
 
 ##################################################
-GitVersion.h: ../.git/HEAD ../.git/index
+GitVersion.h: ../../.git/HEAD ../../.git/index
 	echo "const char *gitVersion = \"$(shell git rev-parse HEAD)\";" > $@
 
 -include Main.d
