@@ -5,8 +5,6 @@ all: $(LIB)
 
 tabix:
 	ln -s -f tabix-0.2.6 tabix
-	sed -i 's:-D_USE_KNETFILE::' tabix/Makefile
-	sed -i 's:-D_USE_KNTFILE::' tabix/Makefile
 	(cd tabix-0.2.6; $(MAKE); $(MAKE) libtabix.so.1)
 
 bzip2:
