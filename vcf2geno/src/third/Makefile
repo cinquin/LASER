@@ -9,12 +9,12 @@ tabix: tabix-0.2.6.tar.bz2
 	ln -s -f tabix-0.2.6 tabix
 	sed -i 's:-D_USE_KNETFILE::' tabix/Makefile
 	sed -i 's:-D_USE_KNTFILE::' tabix/Makefile
-	(cd tabix-0.2.6; make; make libtabix.so.1)
+	(cd tabix-0.2.6; $(MAKE); $(MAKE) libtabix.so.1)
 
 bzip2: bzip2-1.0.6.tar.gz
 	tar zvxf $<
 	ln -s -f bzip2-1.0.6 bzip2
-	(cd bzip2-1.0.6; make)
+	(cd bzip2-1.0.6; $(MAKE))
 
 ######################################################################
 # download sources

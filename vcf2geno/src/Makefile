@@ -18,9 +18,9 @@ BZIP2_INC = third/bzip2
 BZIP2_LIB = third/bzip2/libbz2.a
 
 $(TABIX_INC) $(TABIX_LIB):
-	(cd third; make tabix)
+	(cd third; $(MAKE) tabix)
 $(BZIP2_INC) $(BZIP2_LIB):
-	(cd third; make bzip2)
+	(cd third; $(MAKE) bzip2)
 
 THIRD_INC = $(TABIX_INC) $(BZIP2_INC)
 THIRD_LIB = $(TABIX_LIB) $(BZIP2_LIB)
@@ -35,13 +35,13 @@ VCF_LIB = ./libVcf/lib-vcf.a
 VCF_LIB_DBG = ./libVcf/lib-dbg-vcf.a
 
 $(BASE_LIB):
-	(cd base; make)
+	(cd base; $(MAKE))
 $(BASE_LIB_DBG):
-	(cd base; make debug)
+	(cd base; $(MAKE) debug)
 $(VCF_LIB):
-	(cd libVcf; make)
+	(cd libVcf; $(MAKE))
 $(VCF_LIB_DBG):
-	(cd libVcf; make debug)
+	(cd libVcf; $(MAKE) debug)
 
 ##################################################
 
@@ -122,10 +122,10 @@ clean:
 
 deepclean: clean
 	rm -rf *~
-	(cd base; make clean)
-	(cd libVcf; make clean)
-	(cd third; make deepclean)
-	(cd libsrc; make clean)
+	(cd base; $(MAKE) clean)
+	(cd libVcf; $(MAKE) clean)
+	(cd third; $(MAKE) deepclean)
+	(cd libsrc; $(MAKE) clean)
 
 # archive 
 DATE=$(shell date '+%m%d')
